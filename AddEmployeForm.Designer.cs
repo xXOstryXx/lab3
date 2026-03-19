@@ -34,10 +34,10 @@
             cmbStanowisko = new ComboBox();
             btnZatwierdz = new Button();
             btnAnuluj = new Button();
-            Imię = new Label();
-            Nazwisko = new Label();
-            Wiek = new Label();
-            Stanowsiko = new Label();
+            LImię = new Label();
+            LNazwisko = new Label();
+            LWiek = new Label();
+            LStanowsiko = new Label();
             ((System.ComponentModel.ISupportInitialize)numWiek).BeginInit();
             SuspendLayout();
             // 
@@ -58,10 +58,11 @@
             // numWiek
             // 
             numWiek.Location = new Point(57, 111);
+            numWiek.Minimum = new decimal(new int[] { 18, 0, 0, 0 });
             numWiek.Name = "numWiek";
             numWiek.Size = new Size(100, 23);
             numWiek.TabIndex = 2;
-            numWiek.ValueChanged += numericUpDown1_ValueChanged;
+            numWiek.Value = new decimal(new int[] { 18, 0, 0, 0 });
             // 
             // cmbStanowisko
             // 
@@ -92,51 +93,51 @@
             btnAnuluj.UseVisualStyleBackColor = true;
             btnAnuluj.Click += btnAnuluj_Click;
             // 
-            // Imię
+            // LImię
             // 
-            Imię.AutoSize = true;
-            Imię.Location = new Point(195, 31);
-            Imię.Name = "Imię";
-            Imię.Size = new Size(30, 15);
-            Imię.TabIndex = 6;
-            Imię.Text = "Imię";
+            LImię.AutoSize = true;
+            LImię.Location = new Point(195, 31);
+            LImię.Name = "LImię";
+            LImię.Size = new Size(30, 15);
+            LImię.TabIndex = 6;
+            LImię.Text = "Imię";
             // 
-            // Nazwisko
+            // LNazwisko
             // 
-            Nazwisko.AutoSize = true;
-            Nazwisko.Location = new Point(182, 72);
-            Nazwisko.Name = "Nazwisko";
-            Nazwisko.Size = new Size(57, 15);
-            Nazwisko.TabIndex = 7;
-            Nazwisko.Text = "Nazwisko";
+            LNazwisko.AutoSize = true;
+            LNazwisko.Location = new Point(182, 72);
+            LNazwisko.Name = "LNazwisko";
+            LNazwisko.Size = new Size(57, 15);
+            LNazwisko.TabIndex = 7;
+            LNazwisko.Text = "Nazwisko";
             // 
-            // Wiek
+            // LWiek
             // 
-            Wiek.AutoSize = true;
-            Wiek.Location = new Point(192, 113);
-            Wiek.Name = "Wiek";
-            Wiek.Size = new Size(33, 15);
-            Wiek.TabIndex = 8;
-            Wiek.Text = "Wiek";
+            LWiek.AutoSize = true;
+            LWiek.Location = new Point(192, 113);
+            LWiek.Name = "LWiek";
+            LWiek.Size = new Size(33, 15);
+            LWiek.TabIndex = 8;
+            LWiek.Text = "Wiek";
             // 
-            // Stanowsiko
+            // LStanowsiko
             // 
-            Stanowsiko.AutoSize = true;
-            Stanowsiko.Location = new Point(182, 155);
-            Stanowsiko.Name = "Stanowsiko";
-            Stanowsiko.Size = new Size(67, 15);
-            Stanowsiko.TabIndex = 9;
-            Stanowsiko.Text = "Stanowisko";
+            LStanowsiko.AutoSize = true;
+            LStanowsiko.Location = new Point(182, 155);
+            LStanowsiko.Name = "LStanowsiko";
+            LStanowsiko.Size = new Size(67, 15);
+            LStanowsiko.TabIndex = 9;
+            LStanowsiko.Text = "Stanowisko";
             // 
             // AddEmployeForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(284, 259);
-            Controls.Add(Stanowsiko);
-            Controls.Add(Wiek);
-            Controls.Add(Nazwisko);
-            Controls.Add(Imię);
+            Controls.Add(LStanowsiko);
+            Controls.Add(LWiek);
+            Controls.Add(LNazwisko);
+            Controls.Add(LImię);
             Controls.Add(btnAnuluj);
             Controls.Add(btnZatwierdz);
             Controls.Add(cmbStanowisko);
@@ -158,9 +159,9 @@
         private ComboBox cmbStanowisko;
         private Button btnZatwierdz;
         private Button btnAnuluj;
-        private Label Imię;
-        private Label Nazwisko;
-        private Label Wiek;
-        private Label Stanowsiko;
+        private Label LImię;
+        private Label LNazwisko;
+        private Label LWiek;
+        private Label LStanowsiko;
     }
 }
