@@ -31,7 +31,7 @@
             txtImie = new TextBox();
             txtNazwisko = new TextBox();
             numWiek = new NumericUpDown();
-            cmbStanowsiko = new ComboBox();
+            cmbStanowisko = new ComboBox();
             btnZatwierdz = new Button();
             btnAnuluj = new Button();
             Imię = new Label();
@@ -63,14 +63,14 @@
             numWiek.TabIndex = 2;
             numWiek.ValueChanged += numericUpDown1_ValueChanged;
             // 
-            // cmbStanowsiko
+            // cmbStanowisko
             // 
-            cmbStanowsiko.FormattingEnabled = true;
-            cmbStanowsiko.Location = new Point(57, 152);
-            cmbStanowsiko.Name = "cmbStanowsiko";
-            cmbStanowsiko.Size = new Size(100, 23);
-            cmbStanowsiko.TabIndex = 3;
-            cmbStanowsiko.Text = "Stanowisko";
+            cmbStanowisko.FormattingEnabled = true;
+            cmbStanowisko.Location = new Point(57, 152);
+            cmbStanowisko.Name = "cmbStanowisko";
+            cmbStanowisko.Size = new Size(100, 23);
+            cmbStanowisko.TabIndex = 3;
+            cmbStanowisko.Text = "Stanowisko";
             // 
             // btnZatwierdz
             // 
@@ -80,6 +80,7 @@
             btnZatwierdz.TabIndex = 4;
             btnZatwierdz.Text = "Zatwierdź";
             btnZatwierdz.UseVisualStyleBackColor = true;
+            btnZatwierdz.Click += btnZatwierdz_Click;
             // 
             // btnAnuluj
             // 
@@ -89,6 +90,7 @@
             btnAnuluj.TabIndex = 5;
             btnAnuluj.Text = "Anuluj";
             btnAnuluj.UseVisualStyleBackColor = true;
+            btnAnuluj.Click += btnAnuluj_Click;
             // 
             // Imię
             // 
@@ -98,7 +100,6 @@
             Imię.Size = new Size(30, 15);
             Imię.TabIndex = 6;
             Imię.Text = "Imię";
-            Imię.Click += label1_Click;
             // 
             // Nazwisko
             // 
@@ -138,7 +139,7 @@
             Controls.Add(Imię);
             Controls.Add(btnAnuluj);
             Controls.Add(btnZatwierdz);
-            Controls.Add(cmbStanowsiko);
+            Controls.Add(cmbStanowisko);
             Controls.Add(numWiek);
             Controls.Add(txtNazwisko);
             Controls.Add(txtImie);
@@ -154,7 +155,7 @@
         private TextBox txtImie;
         private TextBox txtNazwisko;
         private NumericUpDown numWiek;
-        private ComboBox cmbStanowsiko;
+        private ComboBox cmbStanowisko;
         private Button btnZatwierdz;
         private Button btnAnuluj;
         private Label Imię;
