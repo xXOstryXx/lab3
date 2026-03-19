@@ -44,6 +44,7 @@
             btnZapisz.TabIndex = 0;
             btnZapisz.Text = "Zapisz do .csv";
             btnZapisz.UseVisualStyleBackColor = true;
+            btnZapisz.Click += btnZapisz_Click;
             // 
             // btnOdczyt
             // 
@@ -53,6 +54,7 @@
             btnOdczyt.TabIndex = 1;
             btnOdczyt.Text = "Odczyt z .csv";
             btnOdczyt.UseVisualStyleBackColor = true;
+            btnOdczyt.Click += btnOdczyt_Click;
             // 
             // btnDodaj
             // 

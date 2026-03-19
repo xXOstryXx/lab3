@@ -45,7 +45,53 @@ namespace lab3
 
         private void btnUsun_Click(object sender, EventArgs e)
         {
-            
+
+        }
+
+        private void btnZapisz_Click(object sender, EventArgs e)
+        {
+            string csvContent = "ID,Imie,Nazwisko,Wiek,Stanowisko\n";
+            foreach (DataRow row in pracownicyTable.Rows)
+            {
+                csvContent += $"{row["ID"]},{row["Imie"]},{row["Nazwisko"]},{row["Wiek"]},{row["Stanowisko"]}\n";
+            }
+            File.WriteAllText("pracownicy.csv", csvContent);
+        }
+
+        private void LoadCSVToDataGridView(string filePath)
+        {
+            if (!File.Exists(filePath))
+            {
+                MessageBox.Show("Plik nie istnieje.", "B³¹d", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            string[] lines = File.ReadAllLines(filePath);
+            DataTable csvTable = new DataTable();
+            string[] headers = lines[0].Split(',');
+            foreach (string header in headers)
+            {
+                csvTable.Columns.Add(header);
+            }
+            for (int i = 1; i < lines.Length; i++)
+            {
+                string[] fields = lines[i].Split(',');
+                DataRow row = csvTable.NewRow();
+                for (int j = 0; j < headers.Length; j++)
+                {
+                    row[j] = fields[j];
+                }
+                pracownicyTable.Rows.Add(row);
+                dataGridView1.DataSource = csvTable;
+            }
+        }
+        private void btnWczytaj_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "CSV files (*.csv)|*.csv|All files (*.*)|*.*";
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                LoadCSVToDataGridView(openFileDialog.FileName);
+            }
         }
     }
 }
