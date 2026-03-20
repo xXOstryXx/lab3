@@ -25,6 +25,7 @@ namespace lab3
             dataGridView1.DataSource = pracownicyTable;
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.ReadOnly = true;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
         private void btnDodaj_Click(object sender, EventArgs e)
