@@ -45,7 +45,17 @@ namespace lab3
 
         private void btnUsun_Click(object sender, EventArgs e)
         {
-
+            if(dataGridView1.SelectedRows.Count > 0)
+            {
+                foreach (DataGridViewRow Row in dataGridView1.SelectedRows)
+                {
+                    dataGridView1.Rows.Remove(Row);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Wybierz ca³y wiersz do usuniêcia", "Brak wyboru", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void btnZapisz_Click(object sender, EventArgs e)
@@ -84,7 +94,7 @@ namespace lab3
                 dataGridView1.DataSource = csvTable;
             }
         }
-        private void btnWczytaj_Click(object sender, EventArgs e)
+        private void btnOdczyt_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "CSV files (*.csv)|*.csv|All files (*.*)|*.*";
