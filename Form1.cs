@@ -45,16 +45,23 @@ namespace lab3
 
         private void btnUsun_Click(object sender, EventArgs e)
         {
-            if(dataGridView1.SelectedRows.Count > 0)
-            {
-                foreach (DataGridViewRow Row in dataGridView1.SelectedRows)
+            if (dataGridView1.SelectedRows.Count > 0)
+            { 
+                DialogResult odpowiedz = MessageBox.Show("Czy na pewno chcesz usun¹æ zaznaczony wiersz?", "Potwierdzenie", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (odpowiedz == DialogResult.Yes)
                 {
-                    dataGridView1.Rows.Remove(Row);
+                    foreach (DataGridViewRow selectedRow in dataGridView1.SelectedRows)
+                    {
+                        if (!selectedRow.IsNewRow)
+                        {
+                            dataGridView1.Rows.Remove(selectedRow);
+                        }
+                    }
                 }
             }
             else
-            {
-                MessageBox.Show("Wybierz ca³y wiersz do usuniêcia", "Brak wyboru", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                {
+                    MessageBox.Show("Nie zaznaczono ¿adnego wiersza do usuniêcia.", "B³¹d", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
