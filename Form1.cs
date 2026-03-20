@@ -82,24 +82,40 @@ namespace lab3
                 return;
             }
             string[] lines = File.ReadAllLines(filePath);
-            DataTable csvTable = new DataTable();
-            string[] headers = lines[0].Split(',');
-            foreach (string header in headers)
+            if (lines.Length <= 1)
             {
-                csvTable.Columns.Add(header);
+                MessageBox.Show("Plik jest pusty.", "B³¹d", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
+
+            pracownicyTable.Columns["ID"].AutoIncrement = false;
+            string[] headers = lines[0].Split(',');
+
             for (int i = 1; i < lines.Length; i++)
             {
+                if (string.IsNullOrWhiteSpace(lines[i])) continue;
+
                 string[] fields = lines[i].Split(',');
-                DataRow row = csvTable.NewRow();
-                for (int j = 0; j < headers.Length; j++)
-                {
-                    row[j] = fields[j];
-                }
+
+                DataRow row = pracownicyTable.NewRow();
+
+                row["ID"] = int.Parse(fields[0]);
+                row["Imie"] = fields[1];
+                row["Nazwisko"] = fields[2];
+                row["Wiek"] = int.Parse(fields[3]);
+                row["Stanowisko"] = fields[4];
                 pracownicyTable.Rows.Add(row);
-                dataGridView1.DataSource = csvTable;
+            }
+            pracownicyTable.Columns["ID"].AutoIncrement = true;
+
+            if (pracownicyTable.Rows.Count > 0)
+            {
+                int maxId = pracownicyTable.AsEnumerable().Max(row => row.Field<int>("ID"));
+                pracownicyTable.Columns["ID"].AutoIncrementSeed = maxId + 1;
             }
         }
+
+         
         private void btnOdczyt_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
