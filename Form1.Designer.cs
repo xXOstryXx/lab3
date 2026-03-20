@@ -33,12 +33,14 @@
             btnDodaj = new Button();
             btnUsun = new Button();
             dataGridView1 = new DataGridView();
+            txtSzukaj = new TextBox();
+            lSzukaj = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // btnZapisz
             // 
-            btnZapisz.Location = new Point(19, 264);
+            btnZapisz.Location = new Point(19, 293);
             btnZapisz.Name = "btnZapisz";
             btnZapisz.Size = new Size(153, 42);
             btnZapisz.TabIndex = 0;
@@ -48,7 +50,7 @@
             // 
             // btnOdczyt
             // 
-            btnOdczyt.Location = new Point(512, 264);
+            btnOdczyt.Location = new Point(512, 293);
             btnOdczyt.Name = "btnOdczyt";
             btnOdczyt.Size = new Size(153, 42);
             btnOdczyt.TabIndex = 1;
@@ -84,11 +86,30 @@
             dataGridView1.Size = new Size(543, 215);
             dataGridView1.TabIndex = 4;
             // 
+            // txtSzukaj
+            // 
+            txtSzukaj.Location = new Point(63, 263);
+            txtSzukaj.Name = "txtSzukaj";
+            txtSzukaj.Size = new Size(100, 23);
+            txtSzukaj.TabIndex = 5;
+            txtSzukaj.TextChanged += txtSzukaj_TextChanged;
+            // 
+            // lSzukaj
+            // 
+            lSzukaj.AutoSize = true;
+            lSzukaj.Location = new Point(19, 266);
+            lSzukaj.Name = "lSzukaj";
+            lSzukaj.Size = new Size(40, 15);
+            lSzukaj.TabIndex = 6;
+            lSzukaj.Text = "Szukaj";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(694, 360);
+            Controls.Add(lSzukaj);
+            Controls.Add(txtSzukaj);
             Controls.Add(dataGridView1);
             Controls.Add(btnUsun);
             Controls.Add(btnDodaj);
@@ -98,6 +119,7 @@
             Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -107,5 +129,7 @@
         private Button btnDodaj;
         private Button btnUsun;
         private DataGridView dataGridView1;
+        private TextBox txtSzukaj;
+        private Label lSzukaj;
     }
 }

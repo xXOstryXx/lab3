@@ -46,7 +46,7 @@ namespace lab3
         private void btnUsun_Click(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count > 0)
-            { 
+            {
                 DialogResult odpowiedz = MessageBox.Show("Czy na pewno chcesz usun¹æ zaznaczony wiersz?", "Potwierdzenie", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (odpowiedz == DialogResult.Yes)
                 {
@@ -60,8 +60,8 @@ namespace lab3
                 }
             }
             else
-                {
-                    MessageBox.Show("Nie zaznaczono ¿adnego wiersza do usuniêcia.", "B³¹d", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            {
+                MessageBox.Show("Nie zaznaczono ¿adnego wiersza do usuniêcia.", "B³¹d", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -69,8 +69,8 @@ namespace lab3
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = "Pliki CSV (*.csv)|*.csv|All files (*.*)|*.*";
-            
-            if(saveFileDialog.ShowDialog() == DialogResult.OK)
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 string csvContent = "ID,Imie,Nazwisko,Wiek,Stanowisko\n";
                 foreach (DataRow row in pracownicyTable.Rows)
@@ -122,7 +122,7 @@ namespace lab3
             }
         }
 
-         
+
         private void btnOdczyt_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -130,6 +130,25 @@ namespace lab3
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 LoadCSVToDataGridView(openFileDialog.FileName);
+            }
+        }
+
+        private void txtSzukaj_TextChanged(object sender, EventArgs e)
+        {
+            if(pracownicyTable != null)
+            {
+                string szukanyTekst = txtSzukaj.Text.Trim();
+
+                if (string.IsNullOrEmpty(szukanyTekst))
+                {
+                    pracownicyTable.DefaultView.RowFilter="";
+                }
+                else
+                {
+                    string filter = $"Imie LIKE '%{szukanyTekst}%' OR Nazwisko LIKE '%{szukanyTekst}%' OR Stanowisko LIKE '%{szukanyTekst}%'";
+                    pracownicyTable.DefaultView.RowFilter = filter;
+                }
+
             }
         }
     }
