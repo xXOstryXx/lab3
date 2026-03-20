@@ -60,12 +60,18 @@ namespace lab3
 
         private void btnZapisz_Click(object sender, EventArgs e)
         {
-            string csvContent = "ID,Imie,Nazwisko,Wiek,Stanowisko\n";
-            foreach (DataRow row in pracownicyTable.Rows)
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Pliki CSV (*.csv)|*.csv|All files (*.*)|*.*";
+            
+            if(saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                csvContent += $"{row["ID"]},{row["Imie"]},{row["Nazwisko"]},{row["Wiek"]},{row["Stanowisko"]}\n";
+                string csvContent = "ID,Imie,Nazwisko,Wiek,Stanowisko\n";
+                foreach (DataRow row in pracownicyTable.Rows)
+                {
+                    csvContent += $"{row["ID"]},{row["Imie"]},{row["Nazwisko"]},{row["Wiek"]},{row["Stanowisko"]}\n";
+                }
+                File.WriteAllText(saveFileDialog.FileName, csvContent);
             }
-            File.WriteAllText("pracownicy.csv", csvContent);
         }
 
         private void LoadCSVToDataGridView(string filePath)
