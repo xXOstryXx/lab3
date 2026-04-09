@@ -1,4 +1,7 @@
 using System.Data;
+using System.IO;
+using System.Xml.Serialization;
+using System.Text.Json;
 
 namespace lab3
 {
@@ -66,7 +69,7 @@ namespace lab3
             }
         }
 
-        private void btnZapisz_Click(object sender, EventArgs e)
+        private void btnZapiszCSV_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = "Pliki CSV (*.csv)|*.csv|All files (*.*)|*.*";
@@ -136,13 +139,13 @@ namespace lab3
 
         private void txtSzukaj_TextChanged(object sender, EventArgs e)
         {
-            if(pracownicyTable != null)
+            if (pracownicyTable != null)
             {
                 string szukanyTekst = txtSzukaj.Text.Trim();
 
                 if (string.IsNullOrEmpty(szukanyTekst))
                 {
-                    pracownicyTable.DefaultView.RowFilter="";
+                    pracownicyTable.DefaultView.RowFilter = "";
                 }
                 else
                 {
@@ -152,5 +155,50 @@ namespace lab3
 
             }
         }
+
+        private List<Osoba> PobierzListeOsob()
+        {
+            List<Osoba> lista = new List<Osoba>();
+
+            foreach (DataRow row in pracownicyTable.Rows)
+            {
+                Osoba o = new Osoba();
+                o.ID = Convert.ToInt32(row["ID"]);
+                o.Imie = row["Imie"]?.ToString() ?? "";
+                o.Nazwisko = row["Nazwisko"]?.ToString() ?? "";
+                o.Wiek = Convert.ToInt32(row["Wiek"]);
+                o.Stanowisko = row["Stanowisko"]?.ToString() ?? "";
+
+                lista.Add(o);
+            }
+
+            return lista;
+        }
+        private void btnZapiszXML_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Pliki XML (*.xml)|*.xml|Wszystkie pliki (*.*)|*.*";
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    List<Osoba> dane = PobierzListeOsob();
+                    XmlSerializer serializer = new XmlSerializer(typeof(List<Osoba>));
+
+                    using (TextWriter writer = new StreamWriter(saveFileDialog.FileName))
+                    {
+                        serializer.Serialize(writer, dane);
+                    }
+
+                    MessageBox.Show("Zapisano pomyœlnie do XML", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("B³¹d zapisu: " + ex.Message, "B³¹d", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
     }
 }

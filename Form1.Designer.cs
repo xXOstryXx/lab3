@@ -28,25 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            btnZapisz = new Button();
+            btnZapiszCSV = new Button();
             btnOdczyt = new Button();
             btnDodaj = new Button();
             btnUsun = new Button();
             dataGridView1 = new DataGridView();
             txtSzukaj = new TextBox();
             lSzukaj = new Label();
+            btnZapiszXML = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
-            // btnZapisz
+            // btnZapiszCSV
             // 
-            btnZapisz.Location = new Point(19, 293);
-            btnZapisz.Name = "btnZapisz";
-            btnZapisz.Size = new Size(153, 42);
-            btnZapisz.TabIndex = 0;
-            btnZapisz.Text = "Zapisz do .csv";
-            btnZapisz.UseVisualStyleBackColor = true;
-            btnZapisz.Click += btnZapisz_Click;
+            btnZapiszCSV.Location = new Point(19, 293);
+            btnZapiszCSV.Name = "btnZapiszCSV";
+            btnZapiszCSV.Size = new Size(153, 42);
+            btnZapiszCSV.TabIndex = 0;
+            btnZapiszCSV.Text = "Zapisz do .csv";
+            btnZapiszCSV.UseVisualStyleBackColor = true;
+            btnZapiszCSV.Click += btnZapiszCSV_Click;
             // 
             // btnOdczyt
             // 
@@ -103,18 +104,29 @@
             lSzukaj.TabIndex = 6;
             lSzukaj.Text = "Szukaj";
             // 
+            // btnZapiszXML
+            // 
+            btnZapiszXML.Location = new Point(178, 293);
+            btnZapiszXML.Name = "btnZapiszXML";
+            btnZapiszXML.Size = new Size(153, 42);
+            btnZapiszXML.TabIndex = 7;
+            btnZapiszXML.Text = "Zapisz do .xml";
+            btnZapiszXML.UseVisualStyleBackColor = true;
+            btnZapiszXML.Click += btnZapiszXML_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(694, 360);
+            Controls.Add(btnZapiszXML);
             Controls.Add(lSzukaj);
             Controls.Add(txtSzukaj);
             Controls.Add(dataGridView1);
             Controls.Add(btnUsun);
             Controls.Add(btnDodaj);
             Controls.Add(btnOdczyt);
-            Controls.Add(btnZapisz);
+            Controls.Add(btnZapiszCSV);
             Name = "Form1";
             Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
@@ -124,12 +136,13 @@
 
         #endregion
 
-        private Button btnZapisz;
+        private Button btnZapiszCSV;
         private Button btnOdczyt;
         private Button btnDodaj;
         private Button btnUsun;
         private DataGridView dataGridView1;
         private TextBox txtSzukaj;
         private Label lSzukaj;
+        private Button btnZapiszXML;
     }
 }
