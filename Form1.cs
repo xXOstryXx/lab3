@@ -200,5 +200,32 @@ namespace lab3
             }
         }
 
+        private void btnZapiszJSON_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Pliki JSON (*.json)|*.json|Wszystkie pliki (*.*)|*.*";
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    List<Osoba> dane = PobierzListeOsob();
+
+                    JsonSerializerOptions options = new JsonSerializerOptions
+                    {
+                        WriteIndented = true
+                    };
+
+                    string jsonString = JsonSerializer.Serialize(dane, options);
+                    File.WriteAllText(saveFileDialog.FileName, jsonString);
+
+                    MessageBox.Show("Zapisano pomyœlnie do JSON!", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("B³¹d zapisu: " + ex.Message, "B³¹d", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
     }
 }

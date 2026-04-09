@@ -36,6 +36,7 @@
             txtSzukaj = new TextBox();
             lSzukaj = new Label();
             btnZapiszXML = new Button();
+            btnZapiszJSON = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -51,7 +52,7 @@
             // 
             // btnOdczyt
             // 
-            btnOdczyt.Location = new Point(512, 293);
+            btnOdczyt.Location = new Point(496, 293);
             btnOdczyt.Name = "btnOdczyt";
             btnOdczyt.Size = new Size(153, 42);
             btnOdczyt.TabIndex = 1;
@@ -61,7 +62,7 @@
             // 
             // btnDodaj
             // 
-            btnDodaj.Location = new Point(610, 42);
+            btnDodaj.Location = new Point(574, 42);
             btnDodaj.Name = "btnDodaj";
             btnDodaj.Size = new Size(75, 23);
             btnDodaj.TabIndex = 2;
@@ -71,7 +72,7 @@
             // 
             // btnUsun
             // 
-            btnUsun.Location = new Point(610, 92);
+            btnUsun.Location = new Point(574, 92);
             btnUsun.Name = "btnUsun";
             btnUsun.Size = new Size(75, 23);
             btnUsun.TabIndex = 3;
@@ -114,11 +115,22 @@
             btnZapiszXML.UseVisualStyleBackColor = true;
             btnZapiszXML.Click += btnZapiszXML_Click;
             // 
+            // btnZapiszJSON
+            // 
+            btnZapiszJSON.Location = new Point(337, 293);
+            btnZapiszJSON.Name = "btnZapiszJSON";
+            btnZapiszJSON.Size = new Size(153, 42);
+            btnZapiszJSON.TabIndex = 8;
+            btnZapiszJSON.Text = "Zapisz do JSON";
+            btnZapiszJSON.UseVisualStyleBackColor = true;
+            btnZapiszJSON.Click += btnZapiszJSON_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(694, 360);
+            ClientSize = new Size(655, 360);
+            Controls.Add(btnZapiszJSON);
             Controls.Add(btnZapiszXML);
             Controls.Add(lSzukaj);
             Controls.Add(txtSzukaj);
@@ -144,5 +156,6 @@
         private TextBox txtSzukaj;
         private Label lSzukaj;
         private Button btnZapiszXML;
+        private Button btnZapiszJSON;
     }
 }
